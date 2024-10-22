@@ -20,7 +20,7 @@ webpush.setVapidDetails(
   vapidKeys.privateKey
 );
 
-let subscriptions: any = [];
+let subscriptions = [];
 
 app.post('/subscribe', (req, res) => {
   const subscription = req.body;
