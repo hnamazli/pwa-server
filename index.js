@@ -32,9 +32,11 @@ app.post('/send-notification', (req, res) => {
   const { title, body } = req.body;
   const notificationPayload = { notification: { title, body } };
 
-  const sendNotifications = subscriptions.map(subscription => 
-    webpush.sendNotification(subscription, JSON.stringify(notificationPayload))
-  );
+  const sendNotifications = subscriptions.map(subscription => {
+    console.log(subscription);
+    
+    return webpush.sendNotification(subscription, JSON.stringify(notificationPayload));
+  });
 
   Promise.all(sendNotifications)
     .then(() => res.status(200).json({ message: 'Notifications sent successfully.' }))
