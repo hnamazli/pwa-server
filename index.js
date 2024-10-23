@@ -23,6 +23,8 @@ webpush.setVapidDetails(
 let subscriptions = [];
 
 app.post('/subscribe', (req, res) => {
+  console.log(req.body);
+  
   const subscription = req.body;
   subscriptions.push(subscription);
   res.status(201).json({});
